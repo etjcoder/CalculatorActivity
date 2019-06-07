@@ -78,65 +78,129 @@
 $(document).ready(function() {
 
 
-//These
-
-var num0 = $("#button-0").val();
-var num1 = $("#button-1").val();
-var num2 = $("#button-2").val();
-var num3 = $("#button-3").val();
-var num4 = $("#button-4").val();
-var num5 = $("#button-5").val();
-var num6 = $("#button-6").val();
-var num7 = $("#button-7").val();
-var num8 = $("#button-8").val();
-var num9 = $("#button-9").val();
+  var num1Text = $("#first-number");
+  var num2Text = $("#second-number");
+  var operatorText = $("#operator");
+  var resultText = $("#result");
 
 
-var addition = $("#button-plus").val();
-var subtraction = $("#button-minus").val();
-var multiply = $("#button-multiply").val();
-var division = $("#button-divide").val();
-var power = $("#button-power").val();
-var equal = $("#button-equal").val();
-
-console.log(equal);
+var firstnumhit = false;
+var secondnumhit = false;
+var numONE;
+var numTWO;
+var total;
+var operator;
 
 $(".number").on("click", function() {
 
-});
+if(firstnumhit ==false || secondnumhit ==false){
 
-//Setting the operator class to have an on click myFunction
+  if(firstnumhit ==false){
+    numONE = +$(this).attr("value");
+    console.log(numONE);
+    firstnumhit = true;
+    num1Text.text(numONE);
+  }
+  else if (firstnumhit && secondnumhit == false){
+    numTWO = +$(this).attr("value");
+    console.log(numTWO);
+    secondnumhit = true;
+    num2Text.text(numTWO);
+  }
+
+}
+
+
+});
 
 $(".operator").on("click", function() {
 
+if(firstnumhit && !secondnumhit){
+  operator = $(this).attr("value");
+  console.log(operator);
+  operatorText.text(operator);
+}
+else if (!firstnumhit){
+  console.log("select a first number");
+}
+
+
+});
+
+$(".equal").on("click", function() {
+
+  if(firstnumhit && secondnumhit && operator == "plus"){
+    total = addition(numONE,numTWO);
+    console.log(total);
+
+  }
+  else if (firstnumhit && secondnumhit && operator == "minus") {
+    total = subtraction(numONE,numTWO);
+    console.log(total);
+
+  }
+  else if (firstnumhit && secondnumhit && operator == "times") {
+    total = multiply(numONE,numTWO);
+    console.log(total);
+
+  }
+  else if (firstnumhit && secondnumhit && operator == "divide") {
+    total = division(numONE,numTWO);
+    console.log(total);
+
+  }
+  else if (firstnumhit && secondnumhit && operator == "power") {
+    total = power(numONE,numTWO);
+    console.log(total);
+
+  }
+
+  resultText.text(total);
+
+});
+
+$(".clear").on("click", function() {
+  num1Text.empty();
+  num2Text.empty();
+  operatorText.empty();
+  resultText.empty();
+
 });
 
 
 
-$.fn.addition = function(x,y){
+
+var addition = function(x,y){
   var z=x+y;
   return z;
 }
 
 
-$.fn.subtraction = function(x,y){
+var subtraction = function(x,y){
   var z=x+y;
   return z;
 
 }
 
-$.fn.multiply= function(x,y){
+var multiply= function(x,y){
   var z=x*y;
   return z;
 }
 
-$.fn.division = function(x,y){
+var division = function(x,y){
   var z = x/y;
   return z;
 }
 
+var power = function(x,y){
+  var z  = x**y;
+  return z;
+}
 
 });
+
+
+
 
 </script>
 
