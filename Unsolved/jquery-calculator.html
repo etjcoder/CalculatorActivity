@@ -78,21 +78,40 @@
 $(document).ready(function() {
 
 
-var num0 = $("<button-0>");
-var num1 = $("<button-1>");
-var num2 = $("<button-2>");
-var num3 = $("<button-3>");
-var num4 = $("<button-4>");
-var num5 = $("<button-5>");
-var num6 = $("<button-6>");
-var num7 = $("<button-7>");
-var num8 = $("<button-8>");
-var num9 = $("<button-9>");
+//These
+
+var num0 = $("#button-0").val();
+var num1 = $("#button-1").val();
+var num2 = $("#button-2").val();
+var num3 = $("#button-3").val();
+var num4 = $("#button-4").val();
+var num5 = $("#button-5").val();
+var num6 = $("#button-6").val();
+var num7 = $("#button-7").val();
+var num8 = $("#button-8").val();
+var num9 = $("#button-9").val();
 
 
-var addition = $("<button-plus>");
+var addition = $("#button-plus").val();
+var subtraction = $("#button-minus").val();
+var multiply = $("#button-multiply").val();
+var division = $("#button-divide").val();
+var power = $("#button-power").val();
+var equal = $("#button-equal").val();
 
-// Your code here...
+console.log(equal);
+
+$(".number").on("click", function() {
+
+});
+
+//Setting the operator class to have an on click myFunction
+
+$(".operator").on("click", function() {
+
+});
+
+
 
 $.fn.addition = function(x,y){
   var z=x+y;
@@ -115,6 +134,7 @@ $.fn.division = function(x,y){
   var z = x/y;
   return z;
 }
+
 
 });
 
